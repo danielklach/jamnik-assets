@@ -19,20 +19,20 @@ function foot_data(strpath, strindexpath)
 	document.write("<tr>\n");
 	document.write("<td width=\"15\"><img src=\"files/15.gif\"></td>\n");
 	
-	document.write("<td><a href=\"index.htm\"><img border=\"0\" alt=\"\" src=\"files/top_home.gif\"></a></td>\n");
-	document.write("<td class=\"foot-text\"><a href=\"index.htm\">Strona główna</a></td>\n");
+	document.write("<td><a href=\"index.htm/"><img border=\"0\" alt=\"\" src=\"files/top_home.gif\"></a></td>\n");
+	document.write("<td class=\"foot-text\"><a href=\"index.htm/">Strona główna</a></td>\n");
 	
 	document.write("<td width=\"15\"><img src=\"files/15.gif\"></td>\n");
-	document.write("<td><a href=\"javascript:winOpen\(\'epsonwin2\',\'htmltoc.htm\',0,0,385,iheight-150\)\" ><img border=\"0\" alt=\"\" src=\"files/top_toc.gif\"></a></td>\n");
-	document.write("<td class=\"foot-text\"><a href=\"javascript:winOpen\(\'epsonwin2\',\'htmltoc.htm\',0,0,385,iheight-150\)\" >Spis treści</a></td>\n");
+	document.write("<td><a href=\"javascript:winOpen\(\'epsonwin2\',\'htmltoc.htm/',0,0,385,iheight-150\)\" ><img border=\"0\" alt=\"\" src=\"files/top_toc.gif\"></a></td>\n");
+	document.write("<td class=\"foot-text\"><a href=\"javascript:winOpen\(\'epsonwin2\',\'htmltoc.htm/',0,0,385,iheight-150\)\" >Spis treści</a></td>\n");
 	
 		document.write("<td width=\"15\"><img src=\"files/15.gif\"></td>\n");
-		document.write("<td><a href=\"javascript:winOpen\(\'epsonwin3\',\'indexx.htm\',0,20,385,iheight-150\)\" ><img border=\"0\" alt=\"\" src=\"files/top_indx.gif\"></a></td>\n");
-		document.write("<td class=\"foot-text\"><a href=\"javascript:winOpen\(\'epsonwin3\',\'indexx.htm\',0,40,385,iheight-150\)\" >Indeks</a></td>\n");
+		document.write("<td><a href=\"javascript:winOpen\(\'epsonwin3\',\'indexx.htm/',0,20,385,iheight-150\)\" ><img border=\"0\" alt=\"\" src=\"files/top_indx.gif\"></a></td>\n");
+		document.write("<td class=\"foot-text\"><a href=\"javascript:winOpen\(\'epsonwin3\',\'indexx.htm/',0,40,385,iheight-150\)\" >Indeks</a></td>\n");
 	
 		document.write("<td width=\"15\"><img src=\"files/15.gif\"></td>\n");
-		document.write("<td><a href=\"help.htm\"><img border=0 alt=\"\" src=\"files/top_help.gif\"></a></td>\n");
-		document.write("<td class=\"foot-text\"><a href=\"help.htm\">Pomoc</a></td>\n");
+		document.write("<td><a href=\"help.htm/"><img border=0 alt=\"\" src=\"files/top_help.gif\"></a></td>\n");
+		document.write("<td class=\"foot-text\"><a href=\"help.htm/">Pomoc</a></td>\n");
 	
 	document.write("<td width=\"15\"><img src=\"files/15.gif\"></td>\n");
 	document.write("</tr></tbody></table>\n");
