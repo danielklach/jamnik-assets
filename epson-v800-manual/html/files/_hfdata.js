@@ -3,45 +3,45 @@
 function head_data(strpath, strindexpath)
 {
 	
-	document.write("<img src=\"files/10.gif\">\n");
+	document.write("<img src=/"files/10.gif/">/n");
 	
 }
 
 function foot_data(strpath, strindexpath)
 {
-	document.write("<table cellSpacing=\"0\" cellPadding=\"0\" border=\"0\" width=\"100%\" bgcolor=\"#ffffff\">\n");
-	document.write("<tr><td height=\"20\"></td></tr>\n");
-	document.write("<tr>\n");
-	document.write("<td height=\"25\" align=\"left\" vAlign=\"middle\">\n");
+	document.write("<table cellSpacing=/"0/" cellPadding=/"0/" border=/"0/" width=/"100%/" bgcolor=/"#ffffff/">/n");
+	document.write("<tr><td height=/"20/"></td></tr>/n");
+	document.write("<tr>/n");
+	document.write("<td height=/"25/" align=/"left/" vAlign=/"middle/">/n");
 
-	document.write("<table cellSpacing=\"0\" cellPadding=\"0\" border=0>\n");
-	document.write("<tbody>\n");
-	document.write("<tr>\n");
-	document.write("<td width=\"15\"><img src=\"files/15.gif\"></td>\n");
+	document.write("<table cellSpacing=/"0/" cellPadding=/"0/" border=0>/n");
+	document.write("<tbody>/n");
+	document.write("<tr>/n");
+	document.write("<td width=/"15/"><img src=/"files/15.gif/"></td>/n");
 	
-	document.write("<td><a href=\"index.htm/"><img border=\"0\" alt=\"\" src=\"files/top_home.gif\"></a></td>\n");
-	document.write("<td class=\"foot-text\"><a href=\"index.htm/">Strona główna</a></td>\n");
+	document.write("<td><a href=/"index.htm/"><img border=/"0/" alt=/"/" src=/"files/top_home.gif/"></a></td>/n");
+	document.write("<td class=/"foot-text/"><a href=/"index.htm/">Strona główna</a></td>/n");
 	
-	document.write("<td width=\"15\"><img src=\"files/15.gif\"></td>\n");
-	document.write("<td><a href=\"javascript:winOpen\(\'epsonwin2\',\'htmltoc.htm/',0,0,385,iheight-150\)\" ><img border=\"0\" alt=\"\" src=\"files/top_toc.gif\"></a></td>\n");
-	document.write("<td class=\"foot-text\"><a href=\"javascript:winOpen\(\'epsonwin2\',\'htmltoc.htm/',0,0,385,iheight-150\)\" >Spis treści</a></td>\n");
+	document.write("<td width=/"15/"><img src=/"files/15.gif/"></td>/n");
+	document.write("<td><a href=/"javascript:winOpen/(/'epsonwin2/',/'htmltoc.htm/',0,0,385,iheight-150/)/" ><img border=/"0/" alt=/"/" src=/"files/top_toc.gif/"></a></td>/n");
+	document.write("<td class=/"foot-text/"><a href=/"javascript:winOpen/(/'epsonwin2/',/'htmltoc.htm/',0,0,385,iheight-150/)/" >Spis treści</a></td>/n");
 	
-		document.write("<td width=\"15\"><img src=\"files/15.gif\"></td>\n");
-		document.write("<td><a href=\"javascript:winOpen\(\'epsonwin3\',\'indexx.htm/',0,20,385,iheight-150\)\" ><img border=\"0\" alt=\"\" src=\"files/top_indx.gif\"></a></td>\n");
-		document.write("<td class=\"foot-text\"><a href=\"javascript:winOpen\(\'epsonwin3\',\'indexx.htm/',0,40,385,iheight-150\)\" >Indeks</a></td>\n");
+		document.write("<td width=/"15/"><img src=/"files/15.gif/"></td>/n");
+		document.write("<td><a href=/"javascript:winOpen/(/'epsonwin3/',/'indexx.htm/',0,20,385,iheight-150/)/" ><img border=/"0/" alt=/"/" src=/"files/top_indx.gif/"></a></td>/n");
+		document.write("<td class=/"foot-text/"><a href=/"javascript:winOpen/(/'epsonwin3/',/'indexx.htm/',0,40,385,iheight-150/)/" >Indeks</a></td>/n");
 	
-		document.write("<td width=\"15\"><img src=\"files/15.gif\"></td>\n");
-		document.write("<td><a href=\"help.htm/"><img border=0 alt=\"\" src=\"files/top_help.gif\"></a></td>\n");
-		document.write("<td class=\"foot-text\"><a href=\"help.htm/">Pomoc</a></td>\n");
+		document.write("<td width=/"15/"><img src=/"files/15.gif/"></td>/n");
+		document.write("<td><a href=/"help.htm/"><img border=0 alt=/"/" src=/"files/top_help.gif/"></a></td>/n");
+		document.write("<td class=/"foot-text/"><a href=/"help.htm/">Pomoc</a></td>/n");
 	
-	document.write("<td width=\"15\"><img src=\"files/15.gif\"></td>\n");
-	document.write("</tr></tbody></table>\n");
+	document.write("<td width=/"15/"><img src=/"files/15.gif/"></td>/n");
+	document.write("</tr></tbody></table>/n");
 	
-	document.write("</td>\n");
-	document.write("</tr>\n");
-	document.write("<tr><td height=\"1\" bgcolor=\"#c0c0c0\"><img src=\"files/01.gif\"></td></tr>\n");
-	document.write("<tr><td height=\"30\" class=\"code-text\"><img src=\"files/_fcopy.gif\" align=\"top\">(NPD5061-02 PL)</td></tr>\n");
-	document.write("</table>\n");
+	document.write("</td>/n");
+	document.write("</tr>/n");
+	document.write("<tr><td height=/"1/" bgcolor=/"#c0c0c0/"><img src=/"files/01.gif/"></td></tr>/n");
+	document.write("<tr><td height=/"30/" class=/"code-text/"><img src=/"files/_fcopy.gif/" align=/"top/">(NPD5061-02 PL)</td></tr>/n");
+	document.write("</table>/n");
 }
 
 var iwidth = screen.width;
