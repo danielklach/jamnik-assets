@@ -176,20 +176,32 @@ function winOpen(winName, url, X, Y, W, H) {
 	// Po załadowaniu iframe — przechwyć kliknięcia w linki
 	iframe.onload = function() {
 		try {
-			var doc = iframe.contentDocument || iframe.contentWindow.document;
+			var iframeWin = iframe.contentWindow;
+			var doc = iframe.contentDocument || iframeWin.document;
+
+			// Nadpisz goMain wewnątrz iframe — zamiast window.opener użyj okna rodzica
+			iframeWin.goMain = function(url) {
+				overlay.style.display = 'none';
+				window.location.href = url;
+			};
+
+			// Dodatkowe zabezpieczenie: przechwytuj kliknięcia dla linków z href innym niż javascript:
 			doc.addEventListener('click', function(e) {
 				// Znajdź najbliższy element <a>
 				var link = e.target;
 				while (link && link.tagName !== 'A') link = link.parentNode;
-				if (!link || !link.href) return;
+				if (!link) return;
 
 				var href = link.getAttribute('href') || '';
+
 				// Czysta kotwica (#coś) → zostaw domyślne zachowanie (scroll w iframe)
 				if (href.charAt(0) === '#') return;
-				// javascript: → ignoruj
+
+				// javascript: → goMain obsłuży to samo, ale jeśli coś innego,
+				// zablokuj i przekieruj stronę główną
 				if (href.indexOf('javascript:') === 0) return;
 
-				// Wszystkie inne linki → nawiguj stronę główną i zamknij modal
+				// Zwykłe linki (http, względne) → nawiguj stronę główną i zamknij modal
 				e.preventDefault();
 				overlay.style.display = 'none';
 				window.location.href = link.href; // link.href = absolutny URL
