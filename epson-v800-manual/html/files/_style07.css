@@ -696,3 +696,67 @@
 		line-height: 120%;
 		color: #666666;
 	}
+
+/* ===== RESPONSYWNOŒÆ MOBILNA ===== */
+
+/* Fluid container zamiast sta³ych 725px */
+#container {
+  width: 100% !important;
+  max-width: 725px !important;
+  box-sizing: border-box;
+}
+
+/* Tabele layoutu z atrybutem width="725" */
+table[width="725"] {
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* Fluid obrazki */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Tabele z danymi/specyfikacjami — poziomy scroll zamiast overflow */
+#tables {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Breakpoint mobilny */
+@media screen and (max-width: 640px) {
+
+  /* Ukryj spacer-kolumnê 30px (jest w ka¿dej stronie HTM) */
+  td[width="30"] {
+    display: none;
+  }
+
+  /* Dwukolumnowy layout (strona g³ówna index.htm) › jedna kolumna */
+  td[width="50%"] {
+    display: block;
+    width: 100% !important;
+  }
+
+  /* Zmniejsz baner hero */
+  #titles-image,
+  #titles-image-p,
+  #titles-image-s,
+  #titles-image-x,
+  #titles-image-z {
+    height: 90px;
+    background-size: cover;
+  }
+
+  .manualtitle {
+    padding-top: 35px;
+    font-size: medium;
+  }
+
+  /* Trochê wiêcej miejsca na tekst */
+  .body-text,
+  .table-text {
+    font-size: small;
+    line-height: 150%;
+  }
+}

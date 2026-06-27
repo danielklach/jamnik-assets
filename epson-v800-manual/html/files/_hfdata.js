@@ -1,4 +1,13 @@
-
+// Viewport meta dla urządzeń mobilnych
+(function() {
+  if (!document.querySelector('meta[name="viewport"]')) {
+    var m = document.createElement('meta');
+    m.name = 'viewport';
+    m.content = 'width=device-width, initial-scale=1.0';
+    var h = document.head || document.getElementsByTagName('head')[0];
+    if (h) h.insertBefore(m, h.firstChild);
+  }
+})();
 
 function head_data(strpath, strindexpath)
 {
