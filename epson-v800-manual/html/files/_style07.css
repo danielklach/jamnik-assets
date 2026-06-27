@@ -5,7 +5,7 @@ body {
 		padding: 0 20px;
 		box-sizing: border-box;
 		text-align:left;
-		background: #ffffff url('bg_body.gif') repeat-y 0 0;
+		background: #ffffff url('bg_body.gif') repeat-y 0 0 !important;
 		scrollbar-face-color:#f4f4f4;
 		scrollbar-highlight-color:#929292;
 		scrollbar-3dlight-color: #b0b0b0;
