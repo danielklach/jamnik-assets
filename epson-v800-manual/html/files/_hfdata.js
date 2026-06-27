@@ -32,12 +32,12 @@ function foot_data(strpath, strindexpath)
 	document.write("<td class=\"foot-text\"><a href=\"index.htm\">Strona główna</a></td>\n");
 	
 	document.write("<td width=\"15\"><img src=\"files/15.gif\"></td>\n");
-	document.write("<td><a href=\"javascript:winOpen\(\'epsonwin2\',\'htmltoc.htm\',0,0,385,iheight-150\)\" ><img border=\"0\" alt=\"\" src=\"files/top_toc.gif\"></a></td>\n");
-	document.write("<td class=\"foot-text\"><a href=\"javascript:winOpen\(\'epsonwin2\',\'htmltoc.htm\',0,0,385,iheight-150\)\" >Spis treści</a></td>\n");
+	document.write("<td><a href=\"javascript:winOpen('epsonwin2','htmltoc.htm',0,0,385,iheight-150)\" ><img border=\"0\" alt=\"\" src=\"files/top_toc.gif\"></a></td>\n");
+	document.write("<td class=\"foot-text\"><a href=\"javascript:winOpen('epsonwin2','htmltoc.htm',0,0,385,iheight-150)\" >Spis treści</a></td>\n");
 	
 		document.write("<td width=\"15\"><img src=\"files/15.gif\"></td>\n");
-		document.write("<td><a href=\"javascript:winOpen\(\'epsonwin3\',\'indexx.htm\',0,20,385,iheight-150\)\" ><img border=\"0\" alt=\"\" src=\"files/top_indx.gif\"></a></td>\n");
-		document.write("<td class=\"foot-text\"><a href=\"javascript:winOpen\(\'epsonwin3\',\'indexx.htm\',0,40,385,iheight-150\)\" >Indeks</a></td>\n");
+		document.write("<td><a href=\"javascript:winOpen('epsonwin3','indexx.htm',0,20,385,iheight-150)\" ><img border=\"0\" alt=\"\" src=\"files/top_indx.gif\"></a></td>\n");
+		document.write("<td class=\"foot-text\"><a href=\"javascript:winOpen('epsonwin3','indexx.htm',0,40,385,iheight-150)\" >Indeks</a></td>\n");
 	
 		document.write("<td width=\"15\"><img src=\"files/15.gif\"></td>\n");
 		document.write("<td><a href=\"help.htm\"><img border=0 alt=\"\" src=\"files/top_help.gif\"></a></td>\n");
@@ -56,12 +56,120 @@ function foot_data(strpath, strindexpath)
 var iwidth = screen.width;
 var iheight = screen.height;
 
-function winOpen(winName,url,X,Y,W,H) {
-	var win;
-	win = window.open(url,winName,'top='+X+',left='+Y+',screenX='+X+',screenY='+Y+',scrollbars=1,,menubar=1,resizable=1,width='+W+',height='+H+'');
-	
-	win.focus();
+// ===== MODAL zamiast brzydkiego okna przeglądarki =====
+function winOpen(winName, url, X, Y, W, H) {
+
+	// Wstrzyknij style modala tylko raz
+	if (!document.getElementById('epson-modal-styles')) {
+		var style = document.createElement('style');
+		style.id = 'epson-modal-styles';
+		style.textContent = [
+			'#epson-overlay {',
+			'  position: fixed; top: 0; left: 0;',
+			'  width: 100%; height: 100%;',
+			'  background: rgba(0,0,0,0.55);',
+			'  z-index: 9999;',
+			'  display: flex;',
+			'  align-items: center;',
+			'  justify-content: center;',
+			'}',
+			'#epson-modal {',
+			'  background: #fff;',
+			'  border: 1px solid #bbb;',
+			'  box-shadow: 0 8px 32px rgba(0,0,0,0.28);',
+			'  width: 440px;',
+			'  max-width: 92vw;',
+			'  height: 78vh;',
+			'  display: flex;',
+			'  flex-direction: column;',
+			'  border-radius: 6px;',
+			'  overflow: hidden;',
+			'}',
+			'#epson-modal-head {',
+			'  background: #f0f0f0;',
+			'  border-bottom: 1px solid #ccc;',
+			'  padding: 9px 14px;',
+			'  display: flex;',
+			'  justify-content: space-between;',
+			'  align-items: center;',
+			'  font-family: verdana, arial, sans-serif;',
+			'  font-size: 11px;',
+			'  font-weight: bold;',
+			'  color: #333;',
+			'  flex-shrink: 0;',
+			'}',
+			'#epson-modal-close {',
+			'  cursor: pointer;',
+			'  background: #888;',
+			'  color: #fff;',
+			'  border: none;',
+			'  width: 22px; height: 22px;',
+			'  border-radius: 4px;',
+			'  font-size: 15px;',
+			'  line-height: 22px;',
+			'  text-align: center;',
+			'  padding: 0;',
+			'  font-family: arial, sans-serif;',
+			'}',
+			'#epson-modal-close:hover { background: #444; }',
+			'#epson-modal-frame {',
+			'  flex: 1;',
+			'  border: none;',
+			'  width: 100%;',
+			'}'
+		].join('\n');
+		document.head.appendChild(style);
+	}
+
+	// Stwórz overlay + modal tylko raz, potem reużywaj
+	var overlay = document.getElementById('epson-overlay');
+	if (!overlay) {
+		overlay = document.createElement('div');
+		overlay.id = 'epson-overlay';
+
+		var modal = document.createElement('div');
+		modal.id = 'epson-modal';
+
+		var head = document.createElement('div');
+		head.id = 'epson-modal-head';
+
+		var titleEl = document.createElement('span');
+		titleEl.id = 'epson-modal-title';
+
+		var closeBtn = document.createElement('button');
+		closeBtn.id = 'epson-modal-close';
+		closeBtn.innerHTML = '&#x2715;';
+		closeBtn.onclick = function() { overlay.style.display = 'none'; };
+
+		head.appendChild(titleEl);
+		head.appendChild(closeBtn);
+
+		var iframe = document.createElement('iframe');
+		iframe.id = 'epson-modal-frame';
+
+		modal.appendChild(head);
+		modal.appendChild(iframe);
+		overlay.appendChild(modal);
+		document.body.appendChild(overlay);
+
+		// Kliknięcie w ciemne tło zamyka modal
+		overlay.addEventListener('click', function(e) {
+			if (e.target === overlay) overlay.style.display = 'none';
+		});
+
+		// ESC zamyka modal
+		document.addEventListener('keydown', function(e) {
+			if (e.key === 'Escape') overlay.style.display = 'none';
+		});
+	}
+
+	// Ustaw tytuł i załaduj URL
+	var titles = { 'htmltoc': 'Spis treści', 'indexx': 'Indeks' };
+	var title = '';
+	for (var key in titles) {
+		if (url.indexOf(key) !== -1) { title = titles[key]; break; }
+	}
+	document.getElementById('epson-modal-title').textContent = title;
+	document.getElementById('epson-modal-frame').src = url;
+	overlay.style.display = 'flex';
 }
-
-
-	
