@@ -1,7 +1,9 @@
-	body {
+body {
 		color:#333333;
 		font-family: verdana, arial, sans-serif;
 		margin:0;
+		padding: 0 20px;
+		box-sizing: border-box;
 		text-align:left;
 		background:url('bg_body.gif') repeat-y 0 0;
 		scrollbar-face-color:#f4f4f4;
@@ -222,7 +224,7 @@
 	}
 
 	.direct {
-		font-family: ‚l‚r ƒSƒVƒbƒN;
+		font-family: ‚l‚r SVbN;
 		font-size: 11px;
 		margin:8px 7 2 10px;
 		padding:0px 0 0 8px;
@@ -699,8 +701,6 @@
 
 /* ===== RESPONSYWNOŒÆ MOBILNA ===== */
 
-
-
 /* Fluid container zamiast sta³ych 725px */
 #container {
   width: 100% !important;
@@ -708,11 +708,13 @@
   box-sizing: border-box;
 }
 
+/* Tabele layoutu z atrybutem width="725" — fluid z max-width i wyœrodkowanie */
 table[width="725"] {
-  width: calc(100% - 20px) !important;
+  width: 100% !important;
   max-width: 725px !important;
-  margin: 0 10px !important;
   box-sizing: border-box;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 /* Fluid obrazki */
@@ -730,6 +732,9 @@ img {
 /* Breakpoint mobilny */
 @media screen and (max-width: 640px) {
 
+  body {
+    padding: 0 10px;
+  }
 
   /* Ukryj spacer-kolumnê 30px (jest w ka¿dej stronie HTM) */
   td[width="30"] {
