@@ -699,6 +699,8 @@
 
 /* ===== RESPONSYWNOŒÆ MOBILNA ===== */
 
+
+
 /* Fluid container zamiast sta³ych 725px */
 #container {
   width: 100% !important;
@@ -726,6 +728,11 @@ img {
 
 /* Breakpoint mobilny */
 @media screen and (max-width: 640px) {
+
+  body {
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
 
   /* Ukryj spacer-kolumnê 30px (jest w ka¿dej stronie HTM) */
   td[width="30"] {
