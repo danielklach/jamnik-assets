@@ -163,13 +163,42 @@ function winOpen(winName, url, X, Y, W, H) {
 		});
 	}
 
-	// Ustaw tytuł i załaduj URL
+	// Ustaw tytuł
 	var titles = { 'htmltoc': 'Spis treści', 'indexx': 'Indeks' };
 	var title = '';
 	for (var key in titles) {
 		if (url.indexOf(key) !== -1) { title = titles[key]; break; }
 	}
 	document.getElementById('epson-modal-title').textContent = title;
-	document.getElementById('epson-modal-frame').src = url;
+
+	var iframe = document.getElementById('epson-modal-frame');
+
+	// Po załadowaniu iframe — przechwyć kliknięcia w linki
+	iframe.onload = function() {
+		try {
+			var doc = iframe.contentDocument || iframe.contentWindow.document;
+			doc.addEventListener('click', function(e) {
+				// Znajdź najbliższy element <a>
+				var link = e.target;
+				while (link && link.tagName !== 'A') link = link.parentNode;
+				if (!link || !link.href) return;
+
+				var href = link.getAttribute('href') || '';
+				// Czysta kotwica (#coś) → zostaw domyślne zachowanie (scroll w iframe)
+				if (href.charAt(0) === '#') return;
+				// javascript: → ignoruj
+				if (href.indexOf('javascript:') === 0) return;
+
+				// Wszystkie inne linki → nawiguj stronę główną i zamknij modal
+				e.preventDefault();
+				overlay.style.display = 'none';
+				window.location.href = link.href; // link.href = absolutny URL
+			});
+		} catch(err) {
+			console.warn('Modal iframe error:', err);
+		}
+	};
+
+	iframe.src = url;
 	overlay.style.display = 'flex';
 }
