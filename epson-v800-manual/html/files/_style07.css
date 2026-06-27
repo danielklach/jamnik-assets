@@ -708,9 +708,10 @@
   box-sizing: border-box;
 }
 
-/* Tabele layoutu z atrybutem width="725" */
 table[width="725"] {
-  width: 100% !important;
+  width: calc(100% - 20px) !important;
+  max-width: 725px !important;
+  margin: 0 10px !important;
   box-sizing: border-box;
 }
 
@@ -729,10 +730,6 @@ img {
 /* Breakpoint mobilny */
 @media screen and (max-width: 640px) {
 
-  body {
-    padding: 0 10px;
-    box-sizing: border-box;
-  }
 
   /* Ukryj spacer-kolumnê 30px (jest w ka¿dej stronie HTM) */
   td[width="30"] {
